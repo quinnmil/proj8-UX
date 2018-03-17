@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>ACP Controle Times</title>
+
+  <!-- 'viewport' is used by bootstrap to respond to device size -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Javascript:  JQuery from a content distribution network (CDN) -->
+  <script
+     src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+  </script>
+
+  <!-- Bootstrap includes javascript and css  (must follow jquery) -->
+  <link rel="stylesheet"
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+   <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+   </script>
+
+  <!-- moment.js is the JavaScript equivalent of arrow.py -->
+  <script
+    src="{{ url_for('static', filename="js/moment.min.js") }}"></script>
+
+</head>
+
+
+<body>
+<!-- bootstrap requires a 'container' div around content -->
+<div class="container">
+  <h1>ACP BREVET</h1>
+  <div class="row">
+    <!-- lets the page scale for different window widths, #justbootstrapthings -->
+    <div class="col-md-4">
+      <h3> Checkpoint </h3>
+      <div class="col-md-4">
+        {% for entry in g.kms %}
+          {% if entry != '' %}
+            <p>{{entry}} km</p>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3> Open Time </h3>
+      <div class="col-md-4">
+        {% for entry in g.open %}
+          <p>{{entry}}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3> Close Time </h3>
+      <div class="col-md-4">
+        {% for entry in g.close %}
+          <p>{{entry}}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <a class="btn btn-primary" href="/index" role="button">Start Over</a>
+  </div>
+</div>
+</body> </html>
